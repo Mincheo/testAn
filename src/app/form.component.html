@@ -1,0 +1,32 @@
+<div style="margin:5px;width: 50%">
+
+    <div style="display:flex; align-items: center; justify-content: space-between;">
+
+        <label>Дата и время создания
+            <input [formControl]="createDate" type="datetime-local" value="" /></label>
+        <label>Дата и время выполнения
+            <input [formControl]="execDate" type="datetime-local" value="" min={{execDate.value}} /></label>
+        <label>Статус
+            <select name="status" [formControl]="status" [value]="status.value">
+                <option *ngFor="let s of statuses" [ngValue]="s"
+                [selected]="status.value.title==s.title ? true : false">{{s.title}}</option>
+            </select></label>
+    </div>
+    <div>
+        <p>
+            <label>Краткое описание</label>
+                <input [formControl]="shortdesc" value={{shortdesc.value}} [style.width.%]=100>
+        </p>
+    </div>
+    <div>
+        <p>
+            <label>Полное описание
+                <textarea rows="5" matInput [formControl]="description" value={{description.value}}
+                    [style.width.%]=100></textarea></label>
+        </p>
+    </div>
+    <div style="display:flex; justify-content: space-between;">
+        <a mat-raised-button color="primary" [routerLink]="['']">Назад</a>
+        <a mat-raised-button color="primary" (click)="onSubmit()">Сохранить</a>
+    </div>
+</div>
